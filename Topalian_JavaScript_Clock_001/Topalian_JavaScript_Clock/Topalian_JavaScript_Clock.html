@@ -1,0 +1,113 @@
+<!-- Dedicated to God the Father -->
+
+<!-- All Rights Reserved Christopher Topalian Copyright 2000-2024 -->
+
+<!-- https://github.com/ChristopherTopalian -->
+
+<!-- https://github.com/ChristopherAndrewTopalian -->
+
+<!-- Topalian_JavaScript_Clock.html -->
+
+<!-- Version 001 - (2024-04-13) -->
+
+<html>
+<head>
+<title> Topalian JavaScript Clock </title>
+
+<style>
+
+body 
+{
+    background-color: rgb(40, 40, 40);
+    overflow: hidden;
+}
+
+#clock
+{
+    margin: auto;
+    padding: 17px 15px;
+    background-color: rgb(0, 0, 0);
+    font-size: 60px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+</style>
+
+<script>
+
+function ge(whichId)
+{
+    let result = document.getElementById(whichId);
+
+    return result;
+}
+
+function ce(whichType)
+{
+    let result = document.createElement(whichType);
+
+    return result;
+}
+
+function ba(whichElement)
+{
+    let result = document.body.append(whichElement);
+
+    return result;
+}
+
+function makeClock()
+{
+    let mainDiv = ce("div");
+    mainDiv.id = "clock";
+    ba(mainDiv);
+}
+
+function updateClock(whichElement)
+{
+    if (ge(whichElement))
+    {
+        ge(whichElement).innerHTML = new Date().toLocaleTimeString('en-US');
+    }
+}
+
+let timeUpdate = setInterval(function()
+{
+    updateClock('clock');
+}, 1000);
+
+function whenWindowResized()
+{
+    let theElement = ge('clock');
+
+    theElement.style.position = 'absolute';
+
+    theElement.style.left = window.innerWidth / 2 - theElement.offsetWidth / 2 + 'px';
+
+    theElement.style.top = window.innerHeight / 2 - theElement.offsetHeight / 2 + 'px';
+}
+
+window.onload = function()
+{
+    whenWindowResized();
+};
+
+window.onresize = function()
+{
+    whenWindowResized();
+};
+
+</script>
+
+</head>
+
+<body onload = "makeClock();">
+
+</body>
+
+</html>
+
